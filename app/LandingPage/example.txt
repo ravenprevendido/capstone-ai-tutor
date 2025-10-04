@@ -1,0 +1,58 @@
+'use client';
+
+import { useState } from 'react';
+import { SignIn } from '@clerk/nextjs';
+import Image from 'next/image';
+import { Button } from '@/components/ui/button';
+
+export default function LandingPage() {
+  const [showSignIn, setShowSignIn] = useState(false);
+
+  return (
+    <div className="min-h-screen bg-[#1D1F2B] text-white flex flex-col justify-between">
+      {/* Header */}
+      <header className="flex items-center justify-between p-6">
+        <div className="flex items-center gap-3">
+          <Image src="/logo.png" alt="Logo" width={40} height={40} />
+          <h1 className="text-green-400 font-semibold text-lg">PLMun AI-Tutor</h1>
+        </div>
+        <div className="flex gap-2">
+          <Button
+            onClick={() => setShowSignIn(true)}
+            className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded"
+          >
+            Sign in
+          </Button>
+          <Button
+            variant="outline"
+            className="border border-green-500 text-green-400 hover:bg-green-600 hover:text-white"
+          >
+            Login
+          </Button>
+        </div>
+      </header>
+
+      <main className="flex-1 flex items-center justify-center text-gray-300 text-xl">
+        {/* Optional content */}
+      </main>
+
+      <footer className="text-center py-4 text-sm text-green-400 border-t border-gray-700">
+        @UniLearn || ALL RIGHTS RESERVED 2025
+      </footer>
+
+      {showSignIn && (
+        <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50">
+          <div className="bg-white p-6 rounded-lg shadow-lg relative">
+            <button
+              className="absolute top-2 right-2 text-black font-bold"
+              onClick={() => setShowSignIn(false)}
+            >
+              ✕
+            </button>
+            <SignIn path="/sign-in" routing="virtual" />
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}

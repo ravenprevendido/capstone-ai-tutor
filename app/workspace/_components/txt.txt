@@ -1,0 +1,44 @@
+import { useState, useEffect } from 'react'
+import { usePathname } from 'next/navigation'
+
+const [isOpen, setIsOpen] = useState(true);
+const pathname = usePathname();
+
+// Close sidebar on navigation (mobile only)
+useEffect(() => {
+  const handleResize = () => {
+    if (window.innerWidth < 768) {
+      setIsOpen(false);
+    }
+  };
+
+  handleResize(); // run on mount
+}, [pathname]);
+
+
+
+If it supports an open or collapsed prop:
+
+<Sidebar open={isOpen} onOpenChange={setIsOpen}>
+  {/* Sidebar content */}
+</Sidebar>
+
+
+
+Step 3: Modify Link to Close on Click
+
+Wrap Link in a button and call setIsOpen(false) on click.
+
+<Link
+  href={item.path}
+  onClick={() => {
+    if (window.innerWidth < 768) {
+      setIsOpen(false);
+    }
+  }}
+  className={`text-[17px] flex items-center gap-2
+  ${pathname.includes(item.path) && 'text-primary bg-green-200'}`}
+>
+  <item.icon className='h-7 w-7' />
+  <span>{item.title}</span>
+</Link>
