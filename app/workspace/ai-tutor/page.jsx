@@ -1,8 +1,10 @@
 "use client";
+import { useUser } from "@clerk/nextjs";
 import { useState } from "react";
 import { FaRobot, FaUser } from "react-icons/fa";
 
 export default function AITutorPage() {
+  const {user} = useUser();
   const [messages, setMessages] = useState([
     {
       role: "assistant",
@@ -54,27 +56,27 @@ export default function AITutorPage() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-[#0D1117] px-4">
-      <div className="w-full max-w-3xl bg-[#161B22] rounded-2xl shadow-2xl p-6 flex flex-col h-[80vh]">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-[#0D1117] px-3 sm:px-6 py-6">
+      <div className="w-full max-w-3xl bg-[#161B22] rounded-2xl shadow-2xl flex flex-col h-[85vh] sm:h-[80vh]">
         {/* Header */}
-        <h1 className="text-[25px] font-semibold text-center text-white mb-5">
+        <h1 className="text-[15px] sm:text-[20px] md:text-[25px] font-semibold text-center text-white mb-5 sm:mb-5 px-2">
           Your Personal AI Assistance For Learning
         </h1>
 
-        {/* Chat container */}
-        <div className="flex-1 overflow-y-auto space-y-5 px-2 bg-[#0F1622] rounded-xl p-5">
+        {/* Chat Container */}
+        <div className="flex-1 overflow-y-auto space-y-5 px-2 sm:px-4 bg-[#0F1622] rounded-xl p-3 sm:p-5 scrollbar-thin scrollbar-thumb-gray-700 scrollbar-track-transparent">
           {messages.map((msg, idx) => (
             <div
               key={idx}
-              className={`flex items-end gap-3 ${
+              className={`flex items-end gap-2 sm:gap-3 ${
                 msg.role === "user" ? "justify-end" : "justify-start"
               }`}
             >
               {msg.role === "assistant" && (
-                <FaRobot className="text-green-400 text-xl" />
+                <FaRobot className="text-green-400 text-lg sm:text-xl flex-shrink-0" />
               )}
               <div
-                className={`px-4 py-3 rounded-2xl text-sm leading-relaxed max-w-[80%] break-words ${
+                className={`px-3 sm:px-4 py-2 sm:py-3 rounded-2xl text-xs sm:text-sm leading-relaxed max-w-[85%] sm:max-w-[80%] break-words ${
                   msg.role === "assistant"
                     ? "bg-[#21262D] text-gray-100 text-left"
                     : "bg-[#238636] text-white text-right"
@@ -82,14 +84,18 @@ export default function AITutorPage() {
               >
                 {msg.content}
               </div>
-              {msg.role === "user" && (
-                <FaUser className="text-blue-400 text-xl" />
+              {msg.role === "user" && user?.imageUrl && (
+                <img
+                  src={user.imageUrl}
+                  alt="User Avatar"
+                  className="w-8 h-8 rounded-full border border-blue-400 object-cover"
+                />
               )}
             </div>
           ))}
 
           {loading && (
-            <div className="flex justify-start items-center gap-2 text-gray-400 text-sm animate-pulse">
+            <div className="flex justify-start items-center gap-2 text-gray-400 text-xs sm:text-sm animate-pulse">
               <FaRobot className="text-green-400" />
               <p>AI Tutor is thinking...</p>
             </div>
@@ -99,19 +105,19 @@ export default function AITutorPage() {
         {/* Input */}
         <form
           onSubmit={sendMessage}
-          className="mt-5 flex items-center gap-3 bg-[#0F1622] rounded-xl p-3 border border-[#30363D]"
+          className="mt-4 sm:mt-5 flex items-center gap-2 sm:gap-3 bg-[#0F1622] rounded-xl p-2 sm:p-3 border border-[#30363D]"
         >
           <input
             type="text"
             placeholder="Ask your question here..."
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            className="flex-1 bg-transparent text-white placeholder-gray-400 outline-none px-2"
+            className="flex-1 bg-transparent text-white placeholder-gray-400 outline-none px-2 text-xs sm:text-sm"
           />
           <button
             type="submit"
             disabled={loading}
-            className="bg-[#238636] hover:bg-[#2EA043] px-4 py-2 rounded-lg transition-all duration-200 text-white font-semibold"
+            className="bg-[#238636] hover:bg-[#2EA043] px-3 sm:px-4 py-2 rounded-lg transition-all duration-200 text-white font-semibold text-sm"
           >
             ➤
           </button>
