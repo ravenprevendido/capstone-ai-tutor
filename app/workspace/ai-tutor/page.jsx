@@ -9,7 +9,7 @@ export default function AITutorPage() {
     {
       role: "assistant",
       content:
-        "Hello Alex! I'm your AI Tutor. You can ask me anything about your courses. What would you like to know?",
+       `Hello, ${user?.firstName || user?.username} I'm your AI Tutor. You can ask me anything about your courses. What would you like to know?`,
     },
   ]);
   const [input, setInput] = useState("");
