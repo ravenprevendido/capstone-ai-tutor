@@ -41,7 +41,7 @@ function CourseList() {
                             className='rounded-lg'
                         />
                             </div>
-                            <p className='text-grey-500 text-sm mb-4'>{course.description}</p>
+                            <p className='text-grey-200 text-sm mb-4'>{course.description}</p>
                             {course.progress !== undefined && (
                             <div className='mb-4 mt-2'>
                                 <div className='flex justify-between items-center mb-3'>

@@ -1,44 +1,14 @@
-import { useState, useEffect } from 'react'
-import { usePathname } from 'next/navigation'
-
-const [isOpen, setIsOpen] = useState(true);
-const pathname = usePathname();
-
-// Close sidebar on navigation (mobile only)
-useEffect(() => {
-  const handleResize = () => {
-    if (window.innerWidth < 768) {
-      setIsOpen(false);
-    }
-  };
-
-  handleResize(); // run on mount
-}, [pathname]);
-
-
-
-If it supports an open or collapsed prop:
-
-<Sidebar open={isOpen} onOpenChange={setIsOpen}>
-  {/* Sidebar content */}
-</Sidebar>
-
-
-
-Step 3: Modify Link to Close on Click
-
-Wrap Link in a button and call setIsOpen(false) on click.
-
-<Link
-  href={item.path}
-  onClick={() => {
-    if (window.innerWidth < 768) {
-      setIsOpen(false);
-    }
-  }}
-  className={`text-[17px] flex items-center gap-2
-  ${pathname.includes(item.path) && 'text-primary bg-green-200'}`}
->
-  <item.icon className='h-7 w-7' />
-  <span>{item.title}</span>
-</Link>
+ <div className="absolute right-12 top-10 bg-[#161B22] text-white rounded-xl shadow-lg w-64 p-3 z-50 border border-gray-700 animate-fadeIn">
+            <p className="font-semibold mb-2 text-sm">🔔 Notifications</p>
+            <ul className="space-y-2 text-sm">
+              <li className="bg-[#0D1117] p-2 rounded-lg hover:bg-[#1E242B] transition">
+                New course “AI Fundamentals” is now available!
+              </li>
+              <li className="bg-[#0D1117] p-2 rounded-lg hover:bg-[#1E242B] transition">
+                You completed 3 lessons today! 🎉
+              </li>
+              <li className="bg-[#0D1117] p-2 rounded-lg hover:bg-[#1E242B] transition">
+                Quiz results are ready to view.
+              </li>
+            </ul>
+          </div>

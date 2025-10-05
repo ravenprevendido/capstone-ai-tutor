@@ -10,6 +10,7 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
+  useSidebar,
 } from "@/components/ui/sidebar"
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
@@ -65,6 +66,15 @@ const SideBarOptions=[
 
 
 function AppSidebar() {
+  
+  const {toggle, isOpen} = useSidebar();
+
+
+  const handleMenu = () => {
+    if(window.innerWidth < 768 && isOpen) {
+      setShowMobile(true);
+    }
+  }
 
   const path=usePathname();
  
@@ -95,8 +105,8 @@ function AppSidebar() {
               <SidebarMenu >
                 {SideBarOptions.map((item, index) => (
                   <SidebarMenuItem key={index}>
-                      <SidebarMenuButton asChild className={'p-5'}>
-                          <Link href={item.path} className={`text-[15px] text-white
+                      <SidebarMenuButton  asChild  className={'p-5'} >
+                          <Link  href={item.path} className={`text-[15px] text-white
                           ${path.includes(item.path)&&'text-primary '}`}>
                             <item.icon className='h-7 w-7' />
                             <span>{item.title}</span>
