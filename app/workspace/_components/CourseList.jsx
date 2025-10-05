@@ -14,12 +14,12 @@ function CourseList() {
         <div className='mt-6'>
             <div className='flex justify-between items-center mb-6'>
                 <h2 className='font-bold text-3xl text-gray-300'>Available Courses</h2>
-                <AddNewCourseDialog>
+                {/* <AddNewCourseDialog>
                 <Button className='bg-green-500 hover:bg-green-700'>
                     <Plus className='w-4 h-4 mr-2'/>
                     Create New Course
                 </Button>
-             </AddNewCourseDialog>
+             </AddNewCourseDialog> */}
             </div>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
                 {courseData.map((course) => (

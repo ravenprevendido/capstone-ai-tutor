@@ -7,7 +7,7 @@ function WelcomeBanner() {
 
   const {user} = useUser();
   
-  const displayName = user?.firstName || user?.username || "Guest";
+  const displayName = user?.firstName || user?.username;
 
   return (  
 
@@ -17,7 +17,4 @@ function WelcomeBanner() {
         </div>
   )
 }
-
-
-
 export default WelcomeBanner
