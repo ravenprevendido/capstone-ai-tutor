@@ -53,7 +53,7 @@ const SideBarOptions=[
   {
     title: 'Analytics',
     icon:Compass,
-    path: '/workspace/Analytics'
+    path: '/workspace/analytics'
   },
 
   {
@@ -70,7 +70,7 @@ function AppSidebar() {
  
   return (
     <Sidebar>
-      <SidebarHeader className={'p-4 bg-black'}>
+      <SidebarHeader className={'p-4 bg-[#0D1117]'}>
            <div className="flex items-center justify-start md:justify-start">
           <Image
             src="/plmunlogo.png"
@@ -85,20 +85,18 @@ function AppSidebar() {
         </div>
       </SidebarHeader>
 
-      <SidebarContent className="bg-black">
+      <SidebarContent className="bg-[#0D1117]">
 
         <SidebarGroup>
         </SidebarGroup>
 
-        <SidebarGroup>
-        </SidebarGroup>
-
+      
             <SidebarGroupContent>
               <SidebarMenu >
                 {SideBarOptions.map((item, index) => (
                   <SidebarMenuItem key={index}>
                       <SidebarMenuButton asChild className={'p-5'}>
-                          <Link href={item.path} className={`text-[17px] text-white
+                          <Link href={item.path} className={`text-[15px] text-white
                           ${path.includes(item.path)&&'text-primary '}`}>
                             <item.icon className='h-7 w-7' />
                             <span>{item.title}</span>

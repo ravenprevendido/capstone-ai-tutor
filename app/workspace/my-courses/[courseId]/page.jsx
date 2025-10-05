@@ -32,7 +32,6 @@ export default function  CourseDetailPage() {
                 <h1 className="text-2xl font-bold">{course.title}</h1>
                 <p className="text-sm">By {course.instructor}</p>
             </div>
-            
             <div className="">
             {/* main content is here */}
                 <div className="lg:col-span-3">

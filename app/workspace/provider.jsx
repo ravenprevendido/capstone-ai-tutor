@@ -5,7 +5,7 @@ import AppHeader from './_components/AppHeader'
 
 function WorkspaceProvider({  children }) {
   return (
-    <SidebarProvider className='background-[#161B22]'>
+    <SidebarProvider>
       <AppSidebar/>
     <div className='w-full'>
       <AppHeader/>

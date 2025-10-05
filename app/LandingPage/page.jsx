@@ -12,7 +12,7 @@ export default function LandingPage() {
     const route = useRouter();
     const {signIn, signUp} = useClerk();
     const [showSignIn, setShowSignIn] = useState(null);  // Use this flag for controlling modal visibility
-
+    
 
     const handleSignInSuccess = () =>{
         route.push('/workspace');
@@ -32,6 +32,10 @@ export default function LandingPage() {
         handleSignInSuccess();
     }
 
+
+
+    
+    
     return (
         <div className="min-h-screen bg-[#1d1f2b] text-white flex flex-col justify-between">
             {/* Landing Page Header */}
@@ -56,13 +60,12 @@ export default function LandingPage() {
                             onClick={closeModal}
                         >
                         </button>
-
                         {/* Sign-In / Sign-Up Forms */}
                         {showSignIn === 'sign-in' && (
-                            <SignIn routing="hash" forceRedirectUrl="/workspace" onSignIn={handleSignIn}/>
+                            <SignIn routing="virtual"  onSignIn={handleSignIn}/>
                         )}
                         {showSignIn === 'sign-up' && (
-                            <SignUp routing="hash"  onSignUp={handleSignUp}/>
+                            <SignUp  routing="virtual"  onSignUp={handleSignUp} />
                         )}
                     </div>
                 </div>
@@ -70,6 +73,11 @@ export default function LandingPage() {
         </div>
     );
 }
+
+
+
+
+
 
 
 

@@ -3,8 +3,8 @@ import React from 'react'
 
 function QuizOverview() {
   return (
-    <div className="bg-white p-6 rounded-xl shadow-sm">
-      <h3 className="text-lg font-semibold mb-4">Quiz overview</h3>
+    <div className="p-6 rounded-xl shadow-sm bg-[#13181F] border border-[#232935]">
+      <h3 className="text-lg font-semibold mb-4 text-gray-100">Quiz overview</h3>
       <div className="h-64 flex items-center justify-center">
         {/* Simple chart representation */}
         <div className="w-full h-full relative">

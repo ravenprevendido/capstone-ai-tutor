@@ -31,7 +31,6 @@ const Analytics = () => {
             </div>
           ))}
         </div>
-
         {/* Lesson Completion Rate (Donut Chart Placeholder) */}
         <div className="bg-gray-800 rounded-lg p-6 flex flex-col items-center justify-center">
           <h2 className="text-lg font-medium mb-4">Lesson Complete Rate</h2>

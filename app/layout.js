@@ -29,10 +29,6 @@ const clearAppearance = {
     colorBorder: "#ffffff",
     colorInputText: "#fff",
     socialButtonsBlackButton: "#fff"
-  },
-  elements: {
-    socialButtonsBlockButtonText: "#fff",
-    socialButtonsBlackButton: "#fff"
   }
 }
 export default function RootLayout({ children }) {

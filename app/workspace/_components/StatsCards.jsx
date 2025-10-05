@@ -28,13 +28,13 @@ function StatsCards() {
   ]
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 ">
       {stats.map((stat, index) => (
-        <div key={index} className="bg-white p-6 rounded-xl shadow-sm">
+        <div key={index} className="bg-[#13181F] border border-[#232935] p-6 rounded-xl shadow-sm">
           <div className="flex items-center justify-between">
             <div>
-              <h3 className="text-sm text-gray-500">{stat.title}</h3>
-              <p className="text-3xl font-bold mt-1">{stat.value}</p>
+              <h3 className="text-sm text-gray-100">{stat.title}</h3>
+              <p className="text-3xl text-green-500 font-bold mt-1">{stat.value}</p>
             </div>
             <div className={`p-3 rounded-full ${stat.bgColor}`}>
               <stat.icon className={`w-6 h-6 ${stat.color}`} />
