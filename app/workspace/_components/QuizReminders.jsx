@@ -16,7 +16,7 @@ function QuizReminders() {
   ]
 
   return (
-    <div className="bg-[#13181F] p-6 rounded-xl shadow-sm border border-[#232935]">
+    <div className="bg-[#13181F] p-6 rounded-xl shadow-sm border border-[#232935] md:w-full md:-ml-0 w-82 -ml-6">
       <h3 className="text-lg font-semibold mb-4 text-white text-center">Quiz Reminders</h3>
       <div className="space-y-4">
         {reminders.map((reminder, index) => (

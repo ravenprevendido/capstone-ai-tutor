@@ -3,12 +3,12 @@ import React from 'react'
 
 function QuizOverview() {
   return (
-    <div className="p-6 rounded-xl shadow-sm bg-[#13181F] border border-[#232935]">
+    <div className="p-6 rounded-xl shadow-sm bg-[#13181F] border border-[#232935] md:w-full md:-ml-0 w-82 -ml-6">
       <h3 className="text-lg font-semibold mb-4 text-gray-100">Quiz overview</h3>
       <div className="h-64 flex items-center justify-center">
         {/* Simple chart representation */}
-        <div className="w-full h-full relative">
-          <svg className="w-full h-full" viewBox="0 0 400 200">
+        <div className="md:w-full h-full relative">
+          <svg className="md:w-full w-90 h-full" viewBox="0 0 400 200">
             {/* Chart lines */}
             <polyline
               fill="none"

@@ -13,7 +13,7 @@ function CourseList() {
     return(
         <div className='mt-6'>
             <div className='flex justify-between items-center mb-6'>
-                <h2 className='font-bold text-3xl text-gray-300'>Available Courses</h2>
+                <h2 className='font-bold text-2xl md:text-3xl text-gray-300'>Available Courses</h2>
                 {/* <AddNewCourseDialog>
                 <Button className='bg-green-500 hover:bg-green-700'>
                     <Plus className='w-4 h-4 mr-2'/>
@@ -21,7 +21,7 @@ function CourseList() {
                 </Button>
              </AddNewCourseDialog> */}
             </div>
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
+            <div className='grid grid-cols-1  md:w-full w-80 md:-ml-0 -ml-11 md:grid-cols-2 lg:grid-cols-3 gap-6'>
                 {courseData.map((course) => (
                     <div
                     key={course.id}
@@ -50,7 +50,6 @@ function CourseList() {
                                     </div>
                                     <div className='w-full bg-gray-200 rounded-full h-2'>
                                         <div className='bg-green-600 h-2 rounded-full transition-all duration-300' style={{ width: `${course.progress}%` }}>
-
                                         </div>
                                     </div>
                                 </div>

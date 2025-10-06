@@ -66,7 +66,7 @@ const quizzes = [
 
 const QuizzessAssessment = () => {
   return (
-    <div className="p-6 min-h-screen bg-[#161B22] text-white">
+    <div className="p-6 min-h-screen bg-[#161B22] text-white md:w-full md:-ml-0 w-82 -ml-6">
       <h1 className="text-[22px] font-bold mb-6 lg:text-3xl ">All Quizzes & Assessments</h1>
       
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">

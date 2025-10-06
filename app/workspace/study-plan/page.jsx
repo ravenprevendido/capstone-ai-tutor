@@ -18,7 +18,7 @@ const studyData = {
 
 const StudyPlanList = () => {
   return (
-    <div className="bg-[#161B22] text-white min-h-screen px-6 py-10">
+    <div className="bg-[#161B22] text-white min-h-screen px-6 py-10 w-80 md:w-full md:-ml-0 -ml-5">
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-xl font-semibold uppercase">Study Plan</h2>
         <span className="text-sm text-gray-300">{studyData.week}</span>

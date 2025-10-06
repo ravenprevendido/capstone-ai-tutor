@@ -4,7 +4,7 @@ import { CheckCircle, FileText, ListCheck } from "lucide-react";
 
 export default function CourseProgressBar(){
     return (
-        <div className="bg-[#1a1d24] p-6 rounded-lg space-y-4 shadow-md">
+        <div className="bg-[#1a1d24] p-10 rounded-lg space-y-4 shadow-md">
             <h2 className="text-lg font-bold text-white mb-4">
                 Course Progress
             </h2>

@@ -26,11 +26,8 @@ function StatsCards() {
       bgColor: "bg-yellow-100"
     }
   ]
-
-
-
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 ">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 md:w-full md:-ml-0 w-82 -ml-6">
       {stats.map((stat, index) => (
         <div key={index} className="bg-[#13181F] border border-[#232935] p-6 rounded-xl shadow-sm">
           <div className="flex items-center justify-between">

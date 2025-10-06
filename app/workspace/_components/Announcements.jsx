@@ -21,7 +21,7 @@ function Announcements() {
   ]   
       
   return (
-    <div className="bg-[#13181F] p-6 rounded-xl shadow-sm">
+    <div className="bg-[#13181F] p-6 rounded-xl shadow-sm md:w-full md:-ml-0 w-82 -ml-6">
       <h3 className="text-lg font-semibold mb-4 text-center text-white">Announcements</h3>
       <div className="space-y-4">
         {announcements.map((announcement, index) => (

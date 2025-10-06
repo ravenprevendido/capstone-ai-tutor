@@ -14,7 +14,7 @@ function LessonMaterials() {
 
   return (
     <div className="text-white">
-      <div className="bg-[#1e1e1e] rounded-lg p-6 shadow">
+      <div className="bg-[#1e1e1e] rounded-lg p-6 md:w-full w-80 md:-ml-0 -ml-11 shadow">
         {/* Header */}
         <div className="hidden md:grid md:grid-cols-4 font-semibold text-gray-400 mb-4 border-b border-gray-600 pb-2 text-sm">
           <div className="flex items-center gap-2">
@@ -30,7 +30,7 @@ function LessonMaterials() {
           course.lessons?.map((lesson, index) => (
             <div
               key={`${course.id}-${index}`}
-              className="grid grid-cols-1 md:grid-cols-4 items-start md:items-center gap-3 md:gap-0 p-3 border-b border-gray-700 text-sm text-white"
+              className="grid grid-cols-1  md:grid-cols-4 items-start md:items-center gap-3 md:gap-0 p-3 border-b border-gray-700 text-sm text-white"
             >
               {/* Lesson */}
               <div className="flex items-center gap-2">
