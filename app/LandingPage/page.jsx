@@ -11,7 +11,7 @@ import LandingHome from "./components/landing";
 export default function LandingPage() {
     const route = useRouter();
     const {signIn, signUp} = useClerk();
-    const [showSignIn, setShowSignIn] = useState(null);  // Use this flag for controlling modal visibility
+    const [showSignIn, setShowSignIn] = useState("sign-in");  // Use this flag for controlling modal visibility
     
 
     const handleSignInSuccess = () =>{
@@ -41,9 +41,10 @@ export default function LandingPage() {
             {/* Landing Page Header */}
             <LandingHome setShowSignIn={setShowSignIn} />
 
+           
             {/* Footer */}
             <LandingFooter />
-
+            
             {/* Modal for Sign-In / Sign-Up */}
             {showSignIn !== null && (
                 <div
