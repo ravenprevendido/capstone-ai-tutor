@@ -3,7 +3,7 @@ import React from 'react'
 
 const Analytics = () => {
   return (
-    <div className="min-h-screen bg-gray-900 text-white p-8 space-y-8 w-80 md:w-full md:-ml-0 -ml-5">
+    <div className="min-h-screen bg-[#13181F]  text-white p-8 space-y-8 w-80 md:w-full md:-ml-0 -ml-5">
       <h1 className="text-2xl font-semibold lg:ml-0 md:ml-0 ml-20">Analytics</h1>
       {/* Top Section: Mastery & Completion Rate */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-74 md:w-full md:-ml-0 -ml-5">
@@ -53,7 +53,7 @@ const Analytics = () => {
       {/* Bottom Section: Daily Study Time */}
       <div className="bg-gray-800 rounded-lg p-6 md:w-full w-75 md:-ml-0 -ml-5">
         <h2 className="text-lg font-medium mb-4">Daily Study Time (Last 7 Days)</h2>
-        <div className="flex items-end gap-4 h-40 ">
+        <div className="flex items-end gap-4 h-40 md:full ">
           {[
             { day: 'Mon', height: 32 },
             { day: 'Tue', height: 16 },

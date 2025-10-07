@@ -6,8 +6,6 @@ import { IoNotifications } from 'react-icons/io5'
 function AppHeader () {
     const [showNotif, setShowNotif] = useState(false);
     const notifRef = useRef(null);
-
-
     useEffect(() => {
         const handleClickOutside = (event) => {
             if(notifRef.current && !notifRef.current.contains(event.target)){

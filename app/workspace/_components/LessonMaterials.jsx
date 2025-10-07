@@ -14,9 +14,9 @@ function LessonMaterials() {
 
   return (
     <div className="text-white">
-      <div className="bg-[#1e1e1e] rounded-lg p-6 md:w-full w-80 md:-ml-0 -ml-11 shadow">
+      <div className="bg-[#13181F] rounded-lg p-6 md:w-full w-80 md:-ml-0 -ml-11 shadow">
         {/* Header */}
-        <div className="hidden md:grid md:grid-cols-4 font-semibold text-gray-400 mb-4 border-b border-gray-600 pb-2 text-sm">
+        <div className="hidden md:grid md:grid-cols-4  font-semibold text-gray-400 mb-4 border-b border-gray-600 pb-2 text-sm">
           <div className="flex items-center gap-2">
             <FileText className="w-4 h-5" /> LESSON
           </div>
