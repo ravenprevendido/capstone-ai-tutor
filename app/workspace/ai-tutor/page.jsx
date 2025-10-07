@@ -56,7 +56,7 @@ export default function AITutorPage() {
   };
 
   return (
-    <div className="min-h-screen w-82 md:-ml-0 -ml-6 flex flex-col items-center justify-center bg-[#0D1117] px-3 sm:px-6 py-6">
+    <div className="min-h-screen w-82 md:w-full md:-ml-0 -ml-6 flex flex-col items-center justify-center bg-[#0D1117] px-3 sm:px-6 py-6">
       <div className="w-full max-w-3xl bg-[#161B22] rounded-2xl shadow-2xl flex flex-col h-[85vh] sm:h-[80vh]">
         {/* Header */}
         <h1 className="text-[15px] sm:text-[20px] md:text-[25px] font-semibold text-center text-white mb-5 sm:mb-5 px-2">
