@@ -5,8 +5,8 @@ import AppHeader from './_components/AppHeader'
 
 function WorkspaceProvider({  children }) {
   
+  
   return (
-
     <SidebarProvider>
       <AppSidebar />
     <div className='w-full'>
@@ -19,6 +19,7 @@ function WorkspaceProvider({  children }) {
     </SidebarProvider>
   )
 }
+
 
 export default WorkspaceProvider
 

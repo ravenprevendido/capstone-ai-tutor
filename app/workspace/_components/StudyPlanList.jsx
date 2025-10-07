@@ -10,4 +10,3 @@ function StudyPlanList() {
 export default StudyPlanList 
 
 
-
