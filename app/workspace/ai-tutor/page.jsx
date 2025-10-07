@@ -1,19 +1,25 @@
 "use client";
 import { useUser } from "@clerk/nextjs";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaRobot, FaUser } from "react-icons/fa";
 
 export default function AITutorPage() {
-  const {user} = useUser();
-  const [messages, setMessages] = useState([
-    {
-      role: "assistant",
-      content:
-       `Hello, ${user?.firstName || user?.username} I'm your AI Tutor. You can ask me anything about your courses. What would you like to know?`,
-    },
-  ]);
+  const {user, isLoaded} = useUser();
+  const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (isLoaded) {
+      const name = user?.firstName || user?.username;
+      setMessages([
+        {
+          role: "assistant",
+          content: `Hello, ${name}! I'm your AI Tutor. You can ask me anything about your courses. What would you like to know?`,
+        },
+      ]);
+    }
+  }, [isLoaded, user]);
 
   const sendMessage = async (e) => {
     e.preventDefault();
