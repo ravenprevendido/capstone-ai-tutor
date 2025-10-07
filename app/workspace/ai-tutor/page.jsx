@@ -20,7 +20,6 @@ export default function AITutorPage() {
       ]);
     }
   }, [isLoaded, user]);
-
   const sendMessage = async (e) => {
     e.preventDefault();
     if (!input.trim()) return;

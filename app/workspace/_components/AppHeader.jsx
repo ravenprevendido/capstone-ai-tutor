@@ -21,7 +21,7 @@ function AppHeader () {
     }, [])
     return (
         <div className='p-4 flex justify-between items-center shadow-sm'>
-            <SidebarTrigger className='text-green-400'/>
+            <SidebarTrigger className='text-green-400'/> <span className='md:hidden visible text-white text-1xl'><span className='text-green-500'>PLMun</span> <span className='text-gray-300'> AI - Tutor</span> </span>
             <div className='relative flex items-center gap-3 ml-auto'>
 
             <div onClick={() => setShowNotif(!showNotif)}>
