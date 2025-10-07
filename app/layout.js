@@ -37,7 +37,7 @@ export default function RootLayout({ children }) {
       
       <html lang="en">
         <body
-         className="overflow-x-hidden"
+         className="overflow-x-hidden  w-full bg-black"
         >
         
          <Provider>{children}</Provider>

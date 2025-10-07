@@ -5,7 +5,7 @@ const quizzes = [
   {
     title: 'Quiz 1: Python Basics',
     course: 'Intro to Python',
-    due: 'Oct 26, 2023',
+    due: 'Oct 26, 2025',
     status: 'Completed',
     score: '95%',
     actionText: 'View Score',
@@ -15,7 +15,7 @@ const quizzes = [
   {
     title: 'Quiz 2: Python Functions',
     course: 'Intro to Python',
-    due: 'Nov 5, 2023',
+    due: 'Nov 5, 2025',
     status: 'Pending',
     score: null,
     actionText: 'Start Quiz',
@@ -25,7 +25,7 @@ const quizzes = [
   {
     title: 'Midterm: Web Dev',
     course: 'Web Development',
-    due: 'Nov 10, 2023',
+    due: 'Nov 10, 2025',
     status: 'Pending',
     score: null,
     actionText: 'Start Quiz',
@@ -35,7 +35,7 @@ const quizzes = [
    {
     title: 'Midterm: Web Dev',
     course: 'Web Development',
-    due: 'Nov 10, 2023',
+    due: 'Nov 10, 2025',
     status: 'Pending',
     score: null,
     actionText: 'Start Quiz',
@@ -45,7 +45,7 @@ const quizzes = [
    {
     title: 'Midterm: Web Dev',
     course: 'Web Development',
-    due: 'Nov 10, 2023',
+    due: 'Nov 10, 2025',
     status: 'Pending',
     score: null,
     actionText: 'Start Quiz',
@@ -55,7 +55,7 @@ const quizzes = [
    {
     title: 'Midterm: Web Dev',
     course: 'Web Development',
-    due: 'Nov 10, 2023',
+    due: 'Nov 10, 2025',
     status: 'Pending',
     score: null,
     actionText: 'Start Quiz',
@@ -74,7 +74,7 @@ const QuizzessAssessment = () => {
           <div key={index} className="bg-[#181e27] rounded-lg p-5 shadow-md border border-slate-700">
             <h2 className="text-xl font-semibold mb-1">{quiz.title}</h2>
             <p className="text-sm text-slate-300 mb-2">Course: {quiz.course}</p>
-            <p className="text-sm text-slate-400 mb-4">📅 Due: {quiz.due}</p>
+            <p className="text-sm text-slate-400 mb-4">Due: {quiz.due}</p>
             
             {quiz.status === 'Completed' ? (
               <div className="mb-3">
@@ -96,5 +96,7 @@ const QuizzessAssessment = () => {
     </div>
   );
 };
+
+
 
 export default QuizzessAssessment;

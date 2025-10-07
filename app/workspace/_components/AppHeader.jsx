@@ -19,7 +19,6 @@ function AppHeader () {
             document.removeEventListener("mousedown", handleClickOutside )
         }
     }, [])
-
     return (
         <div className='p-4 flex justify-between items-center shadow-sm'>
             <SidebarTrigger className='text-green-400'/>
@@ -28,7 +27,6 @@ function AppHeader () {
             <div onClick={() => setShowNotif(!showNotif)}>
             <IoNotifications className='text-white hover:text-green-500 md:w-[20px]' />
             </div>
-
             {/* show notif modal */}
             {showNotif && (
                 <div className='absolute right-15 top-10  text-white bg-[#161B22] rounded-xl shadow-lg w-54 p-3 z-50 border border-gray-700 animate-collapsible-down'>

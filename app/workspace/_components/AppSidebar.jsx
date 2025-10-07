@@ -64,20 +64,16 @@ const SideBarOptions=[
   }
 ]
 
-
 function AppSidebar() {
-  
-  const {toggle, isOpen} = useSidebar();
 
-
-  const handleMenu = () => {
-    if(window.innerWidth < 768 && isOpen) {
-      setShowMobile(true);
+  const {toggle} = useSidebar();
+  const path = usePathname();
+   const handleLinkClick = () => {
+    if (window.innerWidth < 768) {
+      toggle();
     }
-  }
+  };
 
-  const path=usePathname();
- 
   return (
     <Sidebar>
       <SidebarHeader className={'p-4 bg-[#0D1117]'}>
@@ -94,19 +90,15 @@ function AppSidebar() {
           </span>
         </div>
       </SidebarHeader>
-
       <SidebarContent className="bg-[#0D1117]">
-
         <SidebarGroup>
         </SidebarGroup>
-
-      
             <SidebarGroupContent>
               <SidebarMenu >
                 {SideBarOptions.map((item, index) => (
                   <SidebarMenuItem key={index}>
                       <SidebarMenuButton  asChild  className={'p-5'} >
-                          <Link  href={item.path} className={`text-[15px] text-white
+                          <Link  href={item.path} onClick={handleLinkClick} className={`text-[15px] text-white
                           ${path.includes(item.path)&&'text-primary '}`}>
                             <item.icon className='h-7 w-7' />
                             <span>{item.title}</span>
