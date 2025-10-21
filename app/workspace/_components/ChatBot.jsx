@@ -3,12 +3,16 @@ import React, { useEffect, useState } from 'react'
 
 import { BotIcon, X } from 'lucide-react'
 import { AnimatePresence, motion } from 'framer-motion'
+import { usePathname } from 'next/navigation'
 const ChatBot = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [animate, setAnimate] = useState(false);
 
     // animation
-
+    const pathname = usePathname();
+    if(pathname === '/' || pathname.startsWith("/LandingPage")){
+        return null;
+    }
    useEffect(() => {
     const interval = setInterval(() => {
         setAnimate(true);
