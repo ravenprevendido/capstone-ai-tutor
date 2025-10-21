@@ -35,7 +35,7 @@ export default function LandingPage() {
 
 
     return (
-        <div className="min-h-screen bg-[#1d1f2b] text-white flex flex-col justify-between">
+        <div className="min-h-screen bg-[#1d1f2b] text-white flex flex-col justify-between overflow-hidden">
             {/* Landing Page Header */}
             <LandingHome setShowSignIn={setShowSignIn} />
             {/* Footer */}

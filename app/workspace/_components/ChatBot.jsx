@@ -9,10 +9,7 @@ const ChatBot = () => {
     const [animate, setAnimate] = useState(false);
 
     // animation
-    const pathname = usePathname();
-    if(pathname === '/' || pathname.startsWith("/LandingPage")){
-        return null;
-    }
+   
    useEffect(() => {
     const interval = setInterval(() => {
         setAnimate(true);
@@ -21,7 +18,10 @@ const ChatBot = () => {
     return () => clearInterval(interval);
    }, []);
 
-
+ const pathname = usePathname();
+    if(pathname === '/' || pathname.startsWith("/LandingPage")){
+        return null;
+    }
   return (
     <div>
       <motion.div
