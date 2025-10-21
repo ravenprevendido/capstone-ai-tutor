@@ -11,7 +11,6 @@ function LessonMaterials() {
       return <FileText className="w-5 h-5 shrink-0 text-blue-500" />;
     return <File className="text-blue-500 w-5 h-5 shrink-0" />;
   };
-
   return (
     <div className="text-white">
       <div className="bg-[#13181F] rounded-lg p-6 md:w-full w-80 md:-ml-0 -ml-11 shadow">
@@ -24,7 +23,6 @@ function LessonMaterials() {
           <div>STATUS</div>
           <div>ACTION</div>
         </div>
-
         {/* Lessons */}
         {courseData.map((course) =>
           course.lessons?.map((lesson, index) => (

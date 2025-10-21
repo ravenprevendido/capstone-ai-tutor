@@ -3,6 +3,9 @@ import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import Provider from "./provider";
 import LandingPage from "./LandingPage/page";
+import { Toaster } from "react-hot-toast";
+import AuthWatcher from "./workspace/_components/AuthWatcher";
+import ChatBot from "./workspace/_components/ChatBot";
 
 
 const geistSans = Geist({
@@ -41,7 +44,21 @@ export default function RootLayout({ children }) {
         >
         
          <Provider>{children}</Provider>
-         
+         <AuthWatcher/>
+         <ChatBot/>
+        <Toaster
+         position="top-right"
+            toastOptions={{
+              duration: 3000,
+              style: {
+                background: "#161B22",
+                color: "#fff",
+                border: "1px solid #1a1f29",
+                borderRadius: "10px",
+                padding: "12px 16px",
+              },
+            }}
+        />
       </body>
     </html>
   

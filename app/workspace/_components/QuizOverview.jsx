@@ -5,7 +5,7 @@ function QuizOverview() {
   return (
     <div className="p-6 rounded-xl shadow-sm bg-[#13181F] border border-[#232935] md:w-full md:-ml-0 w-82 -ml-6">
       <h3 className="text-lg font-semibold mb-4 text-gray-100">Quiz overview</h3>
-      <div className="h-64 flex items-center justify-center">
+      <div className="h-full flex items-center justify-center">
         {/* Simple chart representation */}
         <div className="md:w-full h-full relative">
           <svg className="md:w-full w-90 h-full" viewBox="0 0 400 200">
@@ -30,13 +30,13 @@ function QuizOverview() {
             <circle cx="350" cy="75" r="3" fill="#3b82f6" />
             
             {/* Week labels */}
-            <text x="50" y="180" textAnchor="middle" className="text-xs fill-gray-500">Wk 1</text>
-            <text x="100" y="180" textAnchor="middle" className="text-xs fill-gray-500">Wk 2</text>
-            <text x="150" y="180" textAnchor="middle" className="text-xs fill-gray-500">Wk 3</text>
-            <text x="200" y="180" textAnchor="middle" className="text-xs fill-gray-500">Wk 4</text>
-            <text x="250" y="180" textAnchor="middle" className="text-xs fill-gray-500">Wk 5</text>
-            <text x="300" y="180" textAnchor="middle" className="text-xs fill-gray-500">Wk 6</text>
-            <text x="350" y="180" textAnchor="middle" className="text-xs fill-gray-500">Wk 7</text>
+            <text x="50" y="180" textAnchor="middle" className="text-[10px] fill-gray-500">Wk 1</text>
+            <text x="100" y="180" textAnchor="middle" className="text-[10px] fill-gray-500">Wk 2</text>
+            <text x="150" y="180" textAnchor="middle" className="text-[10px] fill-gray-500">Wk 3</text>
+            <text x="200" y="180" textAnchor="middle" className="text-[10px] fill-gray-500">Wk 4</text>
+            <text x="250" y="180" textAnchor="middle" className="text-[10px] fill-gray-500">Wk 5</text>
+            <text x="300" y="180" textAnchor="middle" className="text-[10px] fill-gray-500">Wk 6</text>
+            <text x="350" y="180" textAnchor="middle" className="text-[10px] fill-gray-500">Wk 7</text>
           </svg>
         </div>
       </div>

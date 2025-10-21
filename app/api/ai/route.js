@@ -12,8 +12,8 @@ export async function POST(req) {
     const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
 
     const result = await model.generateContent(prompt);
-    const response = await result.response.text();
-
+    const response = result.response.text();
+    
     return Response.json({ text: response });
   } catch (error) {
     console.error("Gemini API Error:", error);

@@ -14,57 +14,63 @@ import {
 } from "@/components/ui/sidebar"
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
-import { Book, Compass, LayoutDashboard, PencilRulerIcon, UserCircle2Icon} from 'lucide-react';
+import { Book, BookCheck, Compass, LayoutDashboard, Notebook, PencilRulerIcon, UserCircle2Icon} from 'lucide-react';
 import Link from 'next/link';
 import { useState } from 'react';
 import { usePathname } from 'next/navigation';
-import AddNewCourseDialog from './AddNewCourseDialog';
+import { FaBook, FaBookReader } from 'react-icons/fa';
+import { IoAnalytics } from 'react-icons/io5';
+
 
 const SideBarOptions=[
   {
     title: 'Dashboard',
     icon:LayoutDashboard,
-    path: '/workspace'
+    path: '/teacher'
   },
 
+  
   {
     title: 'My courses',
-    icon:Book,
-    path: '/workspace/my-courses'
+    icon: FaBook ,
+    path: '/teacher/course'
   },
 
   {
     title: 'Lessons & materials',
-    icon:Book,
-    path: '/workspace/lesson-materials'
+    icon: FaBookReader,
+    path: '/teacher/lesson-materials'
   },
 
   {
     title: 'Quizzes & Assessment',
-    icon:PencilRulerIcon,
-    path: '/workspace/quizzes-assessment'
+    icon: BookCheck,
+    path: '/teacher/quizzes-assessment'
   },
 
   {
     title: 'Study plan',
-    icon:Book,
-    path: '/workspace/study-plan'
+    icon: Notebook,
+    path: '/teacher/study-plan'
   },
 
   {
     title: 'Analytics',
-    icon:Compass,
-    path: '/workspace/analytics'
+    icon: IoAnalytics,
+    path: '/teacher/analytics'
   },
 
   {
     title: 'AI tutor',
     icon:PencilRulerIcon,
-    path: '/workspace/ai-tutor'
+    path: '/teacher/ai-tutor'
   }
 ]
 
-function AppSidebar() {
+
+
+
+function TeacherSidebar() {
 
   const {toggle} = useSidebar();
   const path = usePathname();
@@ -109,9 +115,9 @@ function AppSidebar() {
               </SidebarMenu>
             </SidebarGroupContent>
           </SidebarContent>
-      <SidebarFooter className="bg-[#0D1117]"/>
+      <SidebarFooter className='bg-[#0D1117]' />
     </Sidebar>
   )
 }
 
-export default AppSidebar
+export default TeacherSidebar

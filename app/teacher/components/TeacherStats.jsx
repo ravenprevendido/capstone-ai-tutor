@@ -1,9 +1,10 @@
 "use client"
 import React from "react";
-import { Book, Clock } from "lucide-react";
+import { Book, Clock, User2Icon } from "lucide-react";
 import { FaUserGraduate } from "react-icons/fa";
 import { IoAnalyticsOutline } from "react-icons/io5";
-import TeacherStatistics from "./TeacherStatistics";
+import TeacherCharts from "./TeacherCharts";
+
 
 function TeacherStats() {
   const stats = [
@@ -37,6 +38,8 @@ function TeacherStats() {
     },
   ];
 
+
+
   // Mock data for the two-column section
   const quizzes = [
     { title: "Calculus I Midterm", date: "Nov 15, 2024" },
@@ -50,6 +53,18 @@ function TeacherStats() {
     { title: "New AI Tutor Features Available", date: "Nov 05, 2024" },
   ];
 
+
+
+
+
+  const recent  = [
+    {title: "alice Green Submitted Calculus 1 midterm", date: "Nov, 20, 2025", icon: User2Icon},
+    {title: "alice Green Submitted Calculus 1 midterm", date: "Nov, 20, 2025", icon: User2Icon}
+  ]
+
+
+
+  
   return (
     <div className="md:w-full md:-ml-0 w-82 -ml-6 space-y-6">
       {/* Stats Grid */}
@@ -72,11 +87,10 @@ function TeacherStats() {
             </div>
           </div>
         ))}
-        <TeacherStatistics />
+       
       </div>
-
       {/* Upcoming Quizzes + Announcements */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {/* Upcoming Quizzes */}
         <div className="bg-[#13181F] border border-[#232935] p-6 rounded-xl">
           <h3 className="text-white text-lg font-semibold mb-3">
@@ -97,7 +111,6 @@ function TeacherStats() {
             View All Quizzes
           </p>
         </div>
-
         {/* Recent Announcements */}
         <div className="bg-[#13181F] border border-[#232935] p-6 rounded-xl">
           <h3 className="text-white text-lg font-semibold mb-3">
@@ -118,7 +131,35 @@ function TeacherStats() {
             View All Announcements
           </p>
         </div>
+
+
+
+          <div className="bg-[#13181f] border border-[#232935] p-6 rouneded-xl">
+              <h3 className="text-white text-lg font-semibold mb-3">Recent Student Activity</h3>
+              <p className="text-gray-600">Over view of recent content</p>
+
+              <ul className="divide-y divide-gray-700">
+        {recent.map((item, i) => {
+          const Icon = item.icon;
+          return (
+            <li
+              key={i}
+              className="py-3 flex items-center justify-between text-gray-300 hover:bg-[#1a1f29] transition-all px-3 rounded-lg"
+            >
+              <div className="flex items-center gap-3">
+                <div className="bg-green-700/20 p-2 rounded-full">
+                  <Icon className="text-green-500 w-5 h-5" />
+                </div>
+                <span className="text-sm">{item.title}</span>
+              </div>
+              <span className="text-xs text-gray-500">{item.date}</span>
+            </li>
+          );
+        })}
+      </ul>
+          </div>u
       </div>
+      <TeacherCharts/>
     </div>
   );
 }

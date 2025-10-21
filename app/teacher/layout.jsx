@@ -1,9 +1,9 @@
 import React from 'react'
 
-function AdminProvider() {
+const layout = () => {
   return (
     <div></div>
   )
 }
 
-export default AdminProvider
+export default layout

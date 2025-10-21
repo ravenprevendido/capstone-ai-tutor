@@ -15,7 +15,7 @@ function Announcements() {
     },
     {
       title: "Your 'Python' Assignment has been graded",
-      time: "5 hours ago",  
+      time: "5 hours ago",    
       type: "grade" 
     }     
   ]   
