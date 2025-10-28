@@ -12,13 +12,11 @@ import TeacherStats from './components/TeacherStats';
 export default function TeacherDashboard() {
   
   return (
-    <SidebarProvider>
-      <TeacherSidebar/>
+   
    <div className='w-full'>
-    <MainPage/>
-    <TeacherWelcome/>
+   
     <TeacherStats/>
    </div>
-   </SidebarProvider>
+  
   );
 }

@@ -25,7 +25,7 @@ export default function CourseDetailPage() {
   return (
     <div className="p-6 text-white">
       {/* Header */}
-      <div className="bg-green-600 text-white p-8 w-80 md:w-full md:-ml-0 -ml-11 rounded-lg mb-6">
+      <div className="bg-green-600 text-white p-8 w-80 md:w-full md:ml-0 -ml-11 rounded-lg mb-6">
         <Link href={`/workspace/my-courses/`}>
           <ArrowLeft className="w-4 h-4 text-white" />
         </Link>
@@ -40,7 +40,7 @@ export default function CourseDetailPage() {
           <div className="hidden lg:block">
             <Tabs courseId={courseId} activeTab={activeTab} />
           </div>
-          <div className="w-80 md:w-full md:-ml-0 -ml-11">
+          <div className="w-80 md:w-full md:ml-0 -ml-11">
             {activeTab === "lessons" && <LessonTab lessons={course.lessons} />}
             {activeTab === "quizzes" && <QuizzesTab quizzes={course.quizzes} />}
             {activeTab === "assignments" && (
@@ -52,7 +52,7 @@ export default function CourseDetailPage() {
           </div>
         </div>
         {/* Sidebar */}
-        <div className="lg:col-span-1 space-2 w-80 md:w-80 -ml-11 md:-ml-0">
+        <div className="lg:col-span-1 space-2 w-80 md:w-80 -ml-11 md:ml-0">
           <CourseProgressBar />
           <AiTutorCard />
         </div>

@@ -34,7 +34,7 @@
     "**/*.tsx",
     "**/*.js",
     "**/*.jsx"
-  ],
+, "migrate.mjs"  ],
   "exclude": [
     "node_modules"
   ]

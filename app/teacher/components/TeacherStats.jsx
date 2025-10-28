@@ -1,167 +1,169 @@
-"use client"
-import React from "react";
-import { Book, Clock, User2Icon } from "lucide-react";
-import { FaUserGraduate } from "react-icons/fa";
-import { IoAnalyticsOutline } from "react-icons/io5";
-import TeacherCharts from "./TeacherCharts";
+"use client";
+import { useState } from "react";
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  ResponsiveContainer,
+} from "recharts";
+import { ChevronDown } from "lucide-react";
+import TeacherWelcome from "./TeacherWelcome";
 
+export default function AnalyticsPage() {
+  const [openSection, setOpenSection] = useState(null);
+  const [selectedCourse, setSelectedCourse] = useState("All Courses");
 
-function TeacherStats() {
-  const stats = [
-    {
-      title: "Course Related",
-      value: "3",
-      icon: Book,
-      color: "text-blue-600",
-      bgColor: "bg-blue-100",
-    },
-    {
-      title: "Student Enrolled",
-      value: "2",
-      icon: FaUserGraduate,
-      color: "text-green-600",
-      bgColor: "bg-green-100",
-    },
-    {
-      title: "Average Engagement",
-      value: "4",
-      icon: IoAnalyticsOutline,
-      color: "text-yellow-600",
-      bgColor: "bg-yellow-100",
-    },
-    {
-      title: "Upcoming Quizzes",
-      value: "4",
-      icon: Clock,
-      color: "text-yellow-600",
-      bgColor: "bg-yellow-100",
-    },
+  const allData = [
+    { name: "AI Fund. 101", value: 90 },
+    { name: "ML Basics", value: 82 },
+    { name: "DS & Ethics", value: 95 },
+    { name: "NLP", value: 91 },
+    { name: "DL Apps", value: 79 },
+    { name: "RL", value: 85 },
   ];
 
+  // Filter logic
+  const filteredData =
+    selectedCourse === "All Courses"
+      ? allData
+      : allData.filter((d) => d.name === selectedCourse);
 
+  const toggleSection = (section) => {
+    setOpenSection(openSection === section ? null : section);
+  };
 
-  // Mock data for the two-column section
-  const quizzes = [
-    { title: "Calculus I Midterm", date: "Nov 15, 2024" },
-    { title: "Physics II Quiz", date: "Nov 18, 2024" },
-    { title: "History of Art Essay Due", date: "Nov 20, 2024" },
-  ];
+  const courses = ["All Courses", ...allData.map((d) => d.name)];
 
-  const announcements = [
-    { title: "Holiday Break Schedule Confirmed", date: "Nov 10, 2024" },
-    { title: "Parent-Teacher Conference Sign-up Open", date: "Nov 08, 2024" },
-    { title: "New AI Tutor Features Available", date: "Nov 05, 2024" },
-  ];
-
-
-
-
-
-  const recent  = [
-    {title: "alice Green Submitted Calculus 1 midterm", date: "Nov, 20, 2025", icon: User2Icon},
-    {title: "alice Green Submitted Calculus 1 midterm", date: "Nov, 20, 2025", icon: User2Icon}
-  ]
-
-
-
-  
   return (
-    <div className="md:w-full md:-ml-0 w-82 -ml-6 space-y-6">
-      {/* Stats Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
-        {stats.map((stat, index) => (
+   
+    <div className="min-h-screen bg-[#0d1117] text-gray-200 p-6">
+ <TeacherWelcome/>
+      {/* Top Metrics */}
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+        {[
+          { title: "Total Courses", value: "8", desc: "+5% from last month", icon: "📘" },
+          { title: "Enrolled Students", value: "250", desc: "+10% from last semester", icon: "🎓" },
+          { title: "Pending Assignments", value: "12", desc: "3 urgent deadlines", icon: "🗓️" },
+          { title: "Average Quiz Score", value: "88%", desc: "Consistent performance", icon: "🎯" },
+        ].map((item, index) => (
           <div
             key={index}
-            className="bg-[#13181F] border border-[#232935] p-6 rounded-xl shadow-sm"
+            className="bg-[#161b22] p-5 rounded-2xl shadow hover:shadow-lg hover:shadow-green-500/10 transition"
           >
-            <div className="flex items-center justify-between">
-              <div>
-                <h3 className="text-sm text-gray-100">{stat.title}</h3>
-                <p className="text-3xl text-green-500 font-bold mt-1">
-                  {stat.value}
-                </p>
-              </div>
-              <div className={`p-3 rounded-full ${stat.bgColor}`}>
-                <stat.icon className={`w-6 h-6 ${stat.color}`} />
-              </div>
+            <div className="flex items-center justify-between mb-2">
+              <p className="text-gray-400">{item.title}</p>
+              <span className="text-xl">{item.icon}</span>
             </div>
+            <h2 className="text-3xl font-bold text-green-400">{item.value}</h2>
+            <p className="text-sm text-gray-500 mt-1">{item.desc}</p>
           </div>
         ))}
-       
       </div>
-      {/* Upcoming Quizzes + Announcements */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {/* Upcoming Quizzes */}
-        <div className="bg-[#13181F] border border-[#232935] p-6 rounded-xl">
-          <h3 className="text-white text-lg font-semibold mb-3">
-            Upcoming Quizzes
-          </h3>
-          <ul className="divide-y divide-gray-700">
-            {quizzes.map((item, i) => (
-              <li
-                key={i}
-                className="flex justify-between py-3 text-gray-300 text-sm"
-              >
-                <span>{item.title}</span>
-                <span className="text-gray-400">{item.date}</span>
-              </li>
-            ))}
-          </ul>
-          <p className="text-center text-green-400 mt-3 text-sm cursor-pointer hover:underline">
-            View All Quizzes
-          </p>
-        </div>
-        {/* Recent Announcements */}
-        <div className="bg-[#13181F] border border-[#232935] p-6 rounded-xl">
-          <h3 className="text-white text-lg font-semibold mb-3">
-            Recent Announcements
-          </h3>
-          <ul className="divide-y divide-gray-700">
-            {announcements.map((item, i) => (
-              <li
-                key={i}
-                className="flex justify-between py-3 text-gray-300 text-sm"
-              >
-                <span>{item.title}</span>
-                <span className="text-gray-400">{item.date}</span>
-              </li>
-            ))}
-          </ul>
-          <p className="text-center text-green-400 mt-3 text-sm cursor-pointer hover:underline">
-            View All Announcements
-          </p>
-        </div>
 
+      {/* Bottom Section */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        {/* Chart Section */}
+        <div className="bg-[#161b22] p-6 rounded-2xl shadow-md">
+          <div className="flex justify-between items-center mb-4">
+            <h2 className="text-lg font-semibold text-white">
+              Student Performance Per Course
+            </h2>
 
-
-          <div className="bg-[#13181f] border border-[#232935] p-6 rouneded-xl">
-              <h3 className="text-white text-lg font-semibold mb-3">Recent Student Activity</h3>
-              <p className="text-gray-600">Over view of recent content</p>
-
-              <ul className="divide-y divide-gray-700">
-        {recent.map((item, i) => {
-          const Icon = item.icon;
-          return (
-            <li
-              key={i}
-              className="py-3 flex items-center justify-between text-gray-300 hover:bg-[#1a1f29] transition-all px-3 rounded-lg"
+            {/* Select Dropdown Filter */}
+            <select
+              value={selectedCourse}
+              onChange={(e) => setSelectedCourse(e.target.value)}
+              className="bg-[#0d1117] border border-[#30363d] text-sm text-gray-300 px-3 py-2 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none"
             >
-              <div className="flex items-center gap-3">
-                <div className="bg-green-700/20 p-2 rounded-full">
-                  <Icon className="text-green-500 w-5 h-5" />
-                </div>
-                <span className="text-sm">{item.title}</span>
+              {courses.map((course) => (
+                <option key={course} value={course}>
+                  {course}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <ResponsiveContainer width="100%" height={300}>
+            <BarChart data={filteredData}>
+              <CartesianGrid strokeDasharray="3 3" stroke="#30363d" />
+              <XAxis dataKey="name" stroke="#8b949e" />
+              <YAxis stroke="#8b949e" />
+              <Tooltip
+                contentStyle={{
+                  backgroundColor: "#161b22",
+                  border: "1px solid #30363d",
+                  color: "#fff",
+                }}
+              />
+              <Bar dataKey="value" fill="#22c55e" radius={[6, 6, 0, 0]} />
+            </BarChart>
+          </ResponsiveContainer>
+        </div>
+
+        {/* AI Insights Section */}
+        <div className="bg-[#161b22] p-6 rounded-2xl shadow-md">
+          <h2 className="text-lg font-semibold mb-4 text-white">
+            AI Insights Powered by Gemini
+          </h2>
+
+          {/* Accordion Section */}
+          <div className="space-y-3">
+            {[
+              {
+                title: "Common Student Questions",
+                content: [
+                  "What is the difference between supervised and unsupervised learning?",
+                  "How do I interpret feature importance in a model?",
+                  "Can AI be truly creative, or is it just mimicking?",
+                ],
+              },
+              {
+                title: "AI-Suggested Lesson Improvements",
+                content: [
+                  "Increase interactive exercises for NLP.",
+                  "Add visual examples for Deep Learning topics.",
+                  "Simplify explanations in Reinforcement Learning module.",
+                ],
+              },
+              {
+                title: "Engagement Feedback",
+                content: [
+                  "Students engage more with practical case studies.",
+                  "Weekly recaps improve retention rates by 15%.",
+                ],
+              },
+            ].map((section, index) => (
+              <div key={index} className="border border-[#30363d] rounded-lg">
+                <button
+                  className="flex justify-between items-center w-full px-4 py-3 text-left hover:bg-[#21262d] transition"
+                  onClick={() =>
+                    setOpenSection(openSection === index ? null : index)
+                  }
+                >
+                  <span className="font-medium text-gray-300">{section.title}</span>
+                  <ChevronDown
+                    className={`w-4 h-4 transform transition-transform ${
+                      openSection === index
+                        ? "rotate-180 text-green-400"
+                        : "text-gray-500"
+                    }`}
+                  />
+                </button>
+                {openSection === index && (
+                  <div className="px-6 pb-3 text-sm text-gray-400 space-y-2">
+                    {section.content.map((line, i) => (
+                      <p key={i}>• {line}</p>
+                    ))}
+                  </div>
+                )}
               </div>
-              <span className="text-xs text-gray-500">{item.date}</span>
-            </li>
-          );
-        })}
-      </ul>
-          </div>u
+            ))}
+          </div>
+        </div>
       </div>
-      <TeacherCharts/>
     </div>
   );
 }
-
-export default TeacherStats;

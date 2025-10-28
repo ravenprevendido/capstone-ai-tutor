@@ -1,5 +1,7 @@
-
+import "dotenv/config";
 import { defineConfig } from 'drizzle-kit';
+
+
 
 export default defineConfig({
   schema: './config/schema.js',
@@ -8,3 +10,5 @@ export default defineConfig({
     url: process.env.DATABASE_URL,
   },
 });
+
+

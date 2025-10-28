@@ -13,77 +13,72 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar"
 import Image from 'next/image';
-import { Button } from '@/components/ui/button';
-import { Book, BookCheck, Compass, LayoutDashboard, Notebook, PencilRulerIcon, UserCircle2Icon} from 'lucide-react';
+import { BookCheck, Notebook, PencilRulerIcon } from 'lucide-react';
 import Link from 'next/link';
-import { useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { FaBook, FaBookReader } from 'react-icons/fa';
 import { IoAnalytics } from 'react-icons/io5';
+import { LayoutDashboard } from 'lucide-react';
 
-
-const SideBarOptions=[
+const SideBarOptions = [
   {
     title: 'Dashboard',
-    icon:LayoutDashboard,
+    icon: LayoutDashboard,
     path: '/teacher'
   },
-
-  
   {
     title: 'My courses',
-    icon: FaBook ,
+    icon: FaBook,
     path: '/teacher/course'
   },
-
   {
     title: 'Lessons & materials',
     icon: FaBookReader,
-    path: '/teacher/lesson-materials'
+    path: '/teacher/lesson'
   },
-
   {
     title: 'Quizzes & Assessment',
     icon: BookCheck,
-    path: '/teacher/quizzes-assessment'
+    path: '/teacher/quizzes'
   },
-
   {
     title: 'Study plan',
     icon: Notebook,
-    path: '/teacher/study-plan'
+    path: '/teacher/studyplan'
   },
-
   {
     title: 'Analytics',
     icon: IoAnalytics,
     path: '/teacher/analytics'
   },
-
   {
     title: 'AI tutor',
-    icon:PencilRulerIcon,
+    icon: PencilRulerIcon,
     path: '/teacher/ai-tutor'
   }
 ]
 
-
-
-
 function TeacherSidebar() {
+  const { toggle } = useSidebar();
+  const pathname = usePathname();
 
-  const {toggle} = useSidebar();
-  const path = usePathname();
-   const handleLinkClick = () => {
+  const handleLinkClick = () => {
     if (window.innerWidth < 768) {
       toggle();
     }
   };
 
+  const isActive = (path) => {
+    if (path === '/teacher') {
+      return pathname === '/teacher';
+    }
+    return pathname.startsWith(path);
+  };
+
   return (
     <Sidebar>
       <SidebarHeader className={'p-4 bg-[#0D1117]'}>
-           <div className="flex items-center justify-start md:justify-start">
+        <div className="flex items-center justify-start md:justify-start">
           <Image
             src="/plmunlogo.png"
             alt="logo"
@@ -91,30 +86,35 @@ function TeacherSidebar() {
             height={70}
             className="mx-auto md:mx-0"
           />
-          <span className="ml-2 text-lg font-semibold hidden md:inline-block ">
-           <span className="text-white" > PLMun AI Tutor </span>
+          <span className="ml-2 text-lg font-semibold hidden md:inline-block">
+            <span className="text-white">PLMun AI Tutor</span>
           </span>
         </div>
       </SidebarHeader>
       <SidebarContent className="bg-[#0D1117]">
         <SidebarGroup>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {SideBarOptions.map((item, index) => (
+                <SidebarMenuItem key={index}>
+                  <SidebarMenuButton asChild className={'p-5'}>
+                    <Link 
+                      href={item.path} 
+                      onClick={handleLinkClick}
+                      className={`text-[15px] text-white transition-colors hover:text-green-400 ${
+                        isActive(item.path) ? 'text-green-400 bg-[#161B22]' : ''
+                      }`}
+                    >
+                      <item.icon className='h-7 w-7' />
+                      <span>{item.title}</span>
+                    </Link>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
         </SidebarGroup>
-            <SidebarGroupContent>
-              <SidebarMenu >
-                {SideBarOptions.map((item, index) => (
-                  <SidebarMenuItem key={index}>
-                      <SidebarMenuButton  asChild  className={'p-5'} >
-                          <Link  href={item.path} onClick={handleLinkClick} className={`text-[15px] text-white
-                          ${path.includes(item.path)&&'text-primary '}`}>
-                            <item.icon className='h-7 w-7' />
-                            <span>{item.title}</span>
-                          </Link>
-                      </SidebarMenuButton>
-                  </SidebarMenuItem>
-                ))}
-              </SidebarMenu>
-            </SidebarGroupContent>
-          </SidebarContent>
+      </SidebarContent>
       <SidebarFooter className='bg-[#0D1117]' />
     </Sidebar>
   )

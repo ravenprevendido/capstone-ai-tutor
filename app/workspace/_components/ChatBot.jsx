@@ -22,23 +22,24 @@ const ChatBot = () => {
     if(pathname === '/' || pathname.startsWith("/LandingPage")){
         return null;
     }
+
+
   return (
     <div>
       <motion.div
         onClick={() => setIsOpen(!isOpen)}
-        className='fixed bottom-4 right-6 z-[9999] cursor-pointer'
+        className='fixed bottom-4 right-6 z-9999 cursor-pointer'
         whileHover={{scale: 1.1}}
       >
         <motion.div
             animate={animate ? { scale: [1, 1.2, 1], rotate: [0, 10, -10, 0] } : {}}
             transition={{duration: 0.8}}
-            className='bg-gradient-to-r from-green-600 to-emera-500 p-4 rounded-full shadow-lg'
+            className='bg-linear-to-r from-green-600 to-emera-500 p-4 rounded-full shadow-lg'
         >
             <BotIcon className='w-7 h-7 text-white'/>
         </motion.div>
       </motion.div>
-      
-
+    
       {/* animate pop-up */}
       <AnimatePresence>
         {isOpen && (
@@ -47,7 +48,7 @@ const ChatBot = () => {
             animate={{opacity: 1, y: 0, scale: 1}}
             exit={{opacity: 0, y: 40, scale: 0.9}}
             transition={{duration: 0.3}}
-            className='fixed bottom-20 right-6 bg-[#1d1f2b] border border-[#2a2d3c] text-white w-80 h-96 rounded-2xl shadow-xl z-[9999] flex flex-col overflow-hidden'
+            className='fixed bottom-20 right-6 bg-[#1d1f2b] border border-[#2a2d3c] text-white w-80 h-96 rounded-2xl shadow-xl z-9999 flex flex-col overflow-hidden'
             >
                 <div className='flex justify-between items-center p-4 border-b border-[#2a2d3c] bg-[#13181f]'>
                     <div className='flex items-center gap-2'>
@@ -58,13 +59,12 @@ const ChatBot = () => {
                     <X className='w-5 h-5 text-gray-400 hover:text-white'/>
                     </button>
                 </div>
-
+                
                 <div className='flex-1 p-4 overflow-y-auto text-sm space-y-3'>
                     <div className='bg-[#232935] p-3 rouneded-lg self-start w-fit max-w-[80%]'>
-                       👋  Halloo Baby How can i Help you Study Today?
+                       👋  Hello How can i Help you Study Today?
                     </div>
                 </div>
-
                 <div className='flex items-center gap-2'>
 <input
             type="text"

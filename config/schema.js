@@ -7,7 +7,8 @@ export const usersTable = pgTable("users", {
   email: varchar({ length: 255 }).notNull().unique(),
   clerk_id: varchar("clerk_id", {length: 255}).notNull(),
   role: text("role").notNull().default("student"),
-});
+})
+
 
 
 export const courseTable = pgTable("courses", {
@@ -22,7 +23,5 @@ export const courseTable = pgTable("courses", {
   courseJson: json(),
   userEmail: varchar('userEmail', { length: 255 }).references(() => usersTable.email).notNull(),
 });
-
-
 
 

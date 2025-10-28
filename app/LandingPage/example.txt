@@ -1,78 +1,192 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { BotIcon, X } from 'lucide-react';
+import { useParams, useRouter } from 'next/navigation';
+import { useState } from 'react';
 
-export default function GlobalAIButton() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [animate, setAnimate] = useState(false);
+// Mock data for different courses
+const courseData = {
+  'introduction-to-calculus-i': {
+    title: 'Introduction to Calculus I',
+    description: 'A foundational course covering limits, derivatives, integrals, and their applications.',
+    enrolledStudents: 154,
+    averageCompletion: 78,
+    lastUpdated: '2 days ago',
+    lessons: [
+      {
+        title: 'Limits and Continuity',
+        duration: '45 min',
+        description: 'Explore the fundamental concepts of limits and continuity in functions.',
+        status: 'published'
+      },
+      {
+        title: 'Differentiation Rules',
+        duration: '60 min',
+        description: 'Learn various rules for differentiating functions, including product and chain rules.',
+        status: 'published'
+      },
+      {
+        title: 'Applications of Derivatives',
+        duration: '50 min',
+        description: 'Understand how derivatives are used to solve real-world optimization problems.',
+        status: 'published'
+      },
+      {
+        title: 'Antiderivatives and Integration',
+        duration: '55 min',
+        description: 'Introduction to the concept of antiderivatives and basic integration techniques.',
+        status: 'draft'
+      }
+    ]
+  },
+  'advanced-react-development': {
+    title: 'Advanced React Development',
+    description: 'Master advanced React concepts including hooks, context, performance optimization, and testing.',
+    enrolledStudents: 150,
+    averageCompletion: 75,
+    lastUpdated: '1 day ago',
+    lessons: [
+      {
+        title: 'React Hooks Deep Dive',
+        duration: '50 min',
+        description: 'Advanced usage of useState, useEffect, and custom hooks.',
+        status: 'published'
+      },
+      {
+        title: 'Performance Optimization',
+        duration: '65 min',
+        description: 'Learn memoization, code splitting, and bundle optimization techniques.',
+        status: 'published'
+      }
+    ]
+  },
+  'data-structures-algorithms': {
+    title: 'Data Structures & Algorithms',
+    description: 'Comprehensive course on fundamental data structures and algorithm design patterns.',
+    enrolledStudents: 300,
+    averageCompletion: 45,
+    lastUpdated: '3 days ago',
+    lessons: [
+      {
+        title: 'Arrays and Linked Lists',
+        duration: '40 min',
+        description: 'Understanding basic linear data structures.',
+        status: 'published'
+      },
+      {
+        title: 'Sorting Algorithms',
+        duration: '70 min',
+        description: 'Bubble sort, quicksort, mergesort and their complexities.',
+        status: 'draft'
+      }
+    ]
+  }
+};
 
-  // Animate the icon every 3s (glow or move)
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setAnimate(true);
-      setTimeout(() => setAnimate(false), 800);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);
+export default function CourseDetailPage() {
+  const params = useParams();
+  const router = useRouter();
+  const courseId = params.courseId;
+  const course = courseData[courseId];
+  const [activeTab, setActiveTab] = useState('lessons');
+
+  if (!course) {
+    return (
+      <div className="p-6">
+        <div className="text-white text-center">Course not found</div>
+      </div>
+    );
+  }
 
   return (
-    <>
-      {/* Floating AI Icon */}
-      <motion.div
-        onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 right-6 z-[9999] cursor-pointer"
-        whileHover={{ scale: 1.1 }}
+    <div className="p-6 max-w-6xl mx-auto">
+      {/* Back Button */}
+      <button 
+        onClick={() => router.back()}
+        className="mb-6 text-green-400 hover:text-green-300 flex items-center gap-2"
       >
-        <motion.div
-          animate={animate ? { scale: [1, 1.2, 1], rotate: [0, 10, -10, 0] } : {}}
-          transition={{ duration: 0.8 }}
-          className="bg-gradient-to-r from-green-600 to-emerald-500 p-4 rounded-full shadow-lg"
-        >
-          <BotIcon className="w-7 h-7 text-white" />
-        </motion.div>
-      </motion.div>
+        ← Back to Courses
+      </button>
 
-      {/* Chat Popup */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: 40, scale: 0.9 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 40, scale: 0.9 }}
-            transition={{ duration: 0.3 }}
-            className="fixed bottom-20 right-6 bg-[#1d1f2b] border border-[#2a2d3c] text-white w-80 h-96 rounded-2xl shadow-xl z-[9999] flex flex-col overflow-hidden"
-          >
-            {/* Header */}
-            <div className="flex justify-between items-center p-4 border-b border-[#2a2d3c] bg-[#13181f]">
-              <div className="flex items-center gap-2">
-                <BotIcon className="w-5 h-5 text-green-500" />
-                <h3 className="text-sm font-semibold">PLMun AI Tutor</h3>
-              </div>
-              <button onClick={() => setIsOpen(false)}>
-                <X className="w-4 h-4 text-gray-400 hover:text-white" />
+      {/* Course Header */}
+      <div className="bg-[#161B22] rounded-xl p-6 mb-6 border border-gray-700">
+        <h1 className="text-3xl font-bold text-white mb-3">{course.title}</h1>
+        <p className="text-gray-300 text-lg mb-6">{course.description}</p>
+        
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+          <div className="text-center">
+            <div className="text-2xl font-bold text-white">{course.enrolledStudents}</div>
+            <div className="text-gray-400">Enrolled Students</div>
+            <div className="text-sm text-gray-500 mt-1">Average Completion</div>
+          </div>
+          
+          <div className="text-center">
+            <div className="text-2xl font-bold text-green-400">{course.averageCompletion}%</div>
+            <div className="text-gray-400">Recent Activity</div>
+            <button className="mt-2 text-sm text-blue-400 hover:text-blue-300">
+              View Details
+            </button>
+          </div>
+          
+          <div className="text-center">
+            <div className="text-gray-400">Last updated</div>
+            <div className="text-white font-medium">{course.lastUpdated}</div>
+          </div>
+        </div>
+
+        <div className="border-t border-gray-700 pt-4">
+          {/* Navigation Tabs */}
+          <div className="flex flex-wrap gap-4 mb-4">
+            {['Lessons', 'Quizzes', 'Assignments', 'Announcements', 'Course Progress', 'AI Recommendations'].map((tab) => (
+              <button
+                key={tab}
+                onClick={() => setActiveTab(tab.toLowerCase())}
+                className={`px-4 py-2 rounded-lg transition-colors ${
+                  activeTab === tab.toLowerCase() 
+                    ? 'bg-green-500 text-white' 
+                    : 'text-gray-400 hover:text-white hover:bg-gray-700'
+                }`}
+              >
+                {tab}
               </button>
-            </div>
+            ))}
+          </div>
+        </div>
+      </div>
 
-            {/* Chat body */}
-            <div className="flex-1 p-4 overflow-y-auto text-sm space-y-3">
-              <div className="bg-[#232935] p-3 rounded-lg self-start w-fit max-w-[80%]">
-                👋 Hello! How can I help you study today?
+      {/* Course Content */}
+      <div className="bg-[#161B22] rounded-xl p-6 border border-gray-700">
+        <h2 className="text-2xl font-bold text-white mb-6">Course Lessons</h2>
+        
+        <div className="space-y-4">
+          {course.lessons.map((lesson, index) => (
+            <div key={index} className="border border-gray-700 rounded-lg p-4 hover:border-green-500 transition-colors">
+              <div className="flex justify-between items-start mb-2">
+                <div className="flex-1">
+                  <h3 className="text-lg font-semibold text-white mb-1">{lesson.title}</h3>
+                  <p className="text-gray-400 text-sm mb-2">{lesson.description}</p>
+                  <div className="flex items-center gap-4 text-sm">
+                    <span className="text-gray-500">{lesson.duration}</span>
+                    <span className={`px-2 py-1 rounded ${
+                      lesson.status === 'published' 
+                        ? 'bg-green-500/20 text-green-400' 
+                        : 'bg-yellow-500/20 text-yellow-400'
+                    }`}>
+                      {lesson.status === 'published' ? 'Published' : 'Draft'}
+                    </span>
+                  </div>
+                </div>
+                <button className="text-blue-400 hover:text-blue-300 text-sm ml-4">
+                  Edit Lesson
+                </button>
               </div>
             </div>
-
-            {/* Input */}
-            <div className="p-3 border-t border-[#2a2d3c]">
-              <input
-                type="text"
-                placeholder="Type your question..."
-                className="w-full px-3 py-2 text-sm rounded-lg bg-[#232935] border border-[#2a2d3c] focus:outline-none focus:ring-1 focus:ring-green-500"
-              />
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </>
+          ))}
+          
+          <button className="w-full border-2 border-dashed border-gray-600 rounded-lg p-4 text-gray-400 hover:text-green-400 hover:border-green-400 transition-colors">
+            + Add New Lesson
+          </button>
+        </div>
+      </div>
+    </div>
   );
 }
